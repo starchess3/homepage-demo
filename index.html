@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+  <html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zxl · 个人主页</title>
+    <meta name="description" content="zxl 的个人主页与作品集" />
+    <style>
+      :root {
+        --bg: #f7f8fa;
+        --card: #ffffff;
+        --text: #1a1d24;
+        --muted: #6b7280;
+        --accent: #4f46e5;
+        --accent-2: #7c3aed;
+        --border: #e5e7eb;
+        --shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.12);
+      }
+
+      [data-theme="dark"] {
+        --bg: #0f1115;
+        --card: #1a1d24;
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+        --accent: #818cf8;
+        --accent-2: #a78bfa;
+        --border: #2a2d35;
+        --shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.5);
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang
+  SC",
+          "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.7;
+        transition: background 0.3s, color 0.3s;
+      }
+
+      a { color: inherit; text-decoration: none; }
+  
+      .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+      /* 导航栏 */
+      nav {
+        position: sticky; top: 0; z-index: 10;
+        background: color-mix(in srgb, var(--bg) 85%, transparent);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-inner {
+        display: flex; align-items: center; justify-content: space-between;
+        height: 60px;
+      }
+      .logo { font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
+      .nav-links { display: flex; gap: 26px; align-items: center; }
+      .nav-links a { color: var(--muted); font-size: 14px; transition: color
+  0.2s; }
+      .nav-links a:hover { color: var(--text); }
+      .theme-btn {
+        border: 1px solid var(--border); background: var(--card);
+        color: var(--text); width: 34px; height: 34px; border-radius: 8px;
+        cursor: pointer; font-size: 15px; line-height: 1;
+      }
+      @media (max-width: 560px) {
+        .nav-links { display: none; }
+      }
+
+      /* Hero */
+      .hero { padding: 90px 0 70px; }
+      .hero h1 {
+        font-size: clamp(32px, 6vw, 54px); line-height: 1.15;
+        letter-spacing: -0.03em; margin: 16px 0;
+      }
+      .hero .grad {
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        -webkit-background-clip: text; background-clip: text; color:
+  transparent;
+      }
+      .hero .sub { color: var(--muted); font-size: 18px; max-width: 560px; }
+      .hero .badge {
+        display: inline-block; padding: 4px 12px; border-radius: 999px;
+        background: color-mix(in srgb, var(--accent) 12%, transparent);
+        color: var(--accent); font-size: 13px; font-weight: 500;
+      }
+      .cta { display: flex; gap: 14px; margin-top: 32px; flex-wrap: wrap; }
+      .btn {
+        display: inline-block; padding: 11px 22px; border-radius: 10px;
+        font-size: 15px; font-weight: 500; transition: transform 0.15s, opacity
+  0.15s;
+      }
+      .btn:active { transform: scale(0.97); }
+      .btn-primary {
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        color: #fff;
+      }
+      .btn-ghost { border: 1px solid var(--border); color: var(--text); }
+      .btn-ghost:hover { border-color: var(--accent); }
+
+      /* 通用 section */
+      section { padding: 60px 0; }
+      .section-title { font-size: 28px; letter-spacing: -0.02em; margin-bottom:
+  8px; }
+      .section-desc { color: var(--muted); margin-bottom: 34px; }
+
+      /* 关于 */
+      .about-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+      .card {
+        background: var(--card); border: 1px solid var(--border);
+        border-radius: 16px; padding: 26px; box-shadow: var(--shadow);
+      }
+
+      /* 技能 */
+      .skills { display: grid; grid-template-columns: repeat(auto-fill,
+  minmax(220px, 1fr)); gap: 16px; }
+      .skill {
+        background: var(--card); border: 1px solid var(--border);
+        border-radius: 12px; padding: 18px;
+      }
+      .skill .name { font-weight: 600; margin-bottom: 10px; }
+      .bar { height: 8px; background: var(--border); border-radius: 999px;
+  overflow: hidden; }
+      .bar span {
+        display: block; height: 100%; border-radius: 999px; width: 0;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        transition: width 1s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      footer {
+        border-top: 1px solid var(--border); padding: 28px 0;
+        text-align: center; color: var(--muted); font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="container nav-inner">
+        <div class="logo">zxl</div>
+        <div class="nav-links">
+          <a href="#about">关于</a>
+          <a href="#hobbies">兴趣</a>
+          <a href="#skills">技能</a>
+        </div>
+        <button class="theme-btn" id="themeBtn" 
+  aria-label="切换主题">🌙</button>
+      </div>
+    </nav>
+  
+    <!-- Hero -->
+    <header class="hero container">
+      <span class="badge">👋 你好，欢迎来到我的主页</span>
+      <h1>你好，我是 <span class="grad">zxl</span><br />一名全栈开发者</h1>
+      <p class="sub">
+        热爱构建简洁、优雅、高性能的 Web 应用，专注于把想法变成可用的产品。
+      </p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#hobbies">了解我的兴趣</a>
+        <a class="btn btn-ghost" href="#skills">看看我的技能</a>
+      </div>
+    </header>
+
+    <!-- 关于 -->
+    <section id="about" class="container">
+      <h2 class="section-title">关于我</h2>
+      <p class="section-desc">一点点关于我的事情</p>
+      <div class="about-grid">
+        <div class="card">
+          我是一名全栈开发者，喜欢用代码解决实际问题。工作之余，我热爱生活——喜欢
+  在球场上打篮球，是斯蒂芬·库里的忠实球迷，也爱听陈奕迅的歌。
+        </div>
+      </div>
+    </section>
+  
+    <!-- 兴趣 -->
+    <section id="hobbies" class="container">
+      <h2 class="section-title">兴趣爱好</h2>
+      <p class="section-desc">我生活里热爱的事物</p>
+      <div class="skills">
+        <div class="skill" style="text-align:center;">
+          <div style="font-size:36px;">🏀</div>
+          <div class="name" style="margin-top:8px;">打篮球</div>
+          <div style="color:var(--muted); 
+  font-size:13px;">享受在球场上的每一刻</div>
+        </div>
+        <div class="skill" style="text-align:center;">
+          <div style="font-size:36px;">⭐</div>
+          <div class="name" style="margin-top:8px;">斯蒂芬·库里</div>
+          <div style="color:var(--muted); 
+  font-size:13px;">最爱的球星，三分永远的神</div>
+        </div>
+        <div class="skill" style="text-align:center;">
+          <div style="font-size:36px;">🎵</div>
+          <div class="name" style="margin-top:8px;">陈奕迅</div>
+          <div style="color:var(--muted); 
+  font-size:13px;">最喜欢的歌手，循环他的歌单</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 技能 -->
+    <section id="skills" class="container">
+      <h2 class="section-title">技能</h2>
+      <p class="section-desc">我擅长的一些技术栈</p>
+      <div class="skills">
+        <div class="skill"><div class="name">HTML / CSS</div><div 
+  class="bar"><span data-width="95%"></span></div></div>
+        <div class="skill"><div class="name">JavaScript / TypeScript</div><div 
+  class="bar"><span data-width="90%"></span></div></div>
+        <div class="skill"><div class="name">React / Vue</div><div 
+  class="bar"><span data-width="85%"></span></div></div>
+        <div class="skill"><div class="name">Node.js</div><div class="bar"><span
+  data-width="80%"></span></div></div>
+        <div class="skill"><div class="name">Python</div><div class="bar"><span 
+  data-width="75%"></span></div></div>
+        <div class="skill"><div class="name">数据库 (SQL / NoSQL)</div><div 
+  class="bar"><span data-width="70%"></span></div></div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">© 2026 zxl · 用 ❤️  构建</div>
+    </footer>
+
+    <script>
+      // 主题切换
+      const themeBtn = document.getElementById('themeBtn');
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeBtn.textContent = '☀️ ';
+      }
+      themeBtn.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') ===
+  'dark';
+        if (isDark) {
+          document.documentElement.removeAttribute('data-theme');
+          themeBtn.textContent = '🌙';
+          localStorage.setItem('theme', 'light');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          themeBtn.textContent = '☀️ ';
+          localStorage.setItem('theme', 'dark');
+        }
+      });
+  
+      // 技能条动画：进入视口时触发
+      const bars = document.querySelectorAll('.bar span');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.width = entry.target.dataset.width;
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      bars.forEach((bar) => observer.observe(bar));
+    </script>
+  </body>
+  </html>
