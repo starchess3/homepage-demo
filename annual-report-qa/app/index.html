@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>半导体行业年报问答</title>
+<style>
+  :root { --bg:#f5f7fa; --card:#fff; --line:#e3e8ef; --ink:#1b2733; --sub:#66788c; --blue:#2f6fed; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; background:var(--bg); color:var(--ink); }
+  header { background:linear-gradient(120deg,#16324f,#2f6fed); color:#fff; padding:28px 24px; }
+  header h1 { margin:0 0 6px; font-size:22px; }
+  header p { margin:0; opacity:.85; font-size:13px; }
+  main { max-width:900px; margin:0 auto; padding:20px 16px 60px; }
+  .search { display:flex; gap:8px; margin:18px 0; }
+  .search input { flex:1; padding:12px 14px; border:1px solid var(--line); border-radius:10px; font-size:15px; }
+  .search button { padding:12px 22px; border:0; border-radius:10px; background:var(--blue); color:#fff; font-size:15px; cursor:pointer; }
+  .qa { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; margin-bottom:14px; box-shadow:0 1px 3px rgba(16,42,72,.05); }
+  .qa .answer { background:#f0f5ff; border-left:3px solid var(--blue); padding:10px 12px; border-radius:6px; line-height:1.7; }
+  .meta { font-size:12px; color:var(--sub); margin:8px 0 4px; }
+  .src { font-size:13px; color:var(--ink); line-height:1.6; white-space:pre-wrap; }
+  .badge { display:inline-block; background:#e8f0fe; color:#2f6fed; border-radius:6px; padding:1px 7px; font-size:12px; margin-right:6px; }
+  .hint { color:var(--sub); font-size:13px; }
+</style>
+<header>
+  <h1>半导体行业年报问答</h1>
+  <p>向量 + BM25 混合检索 · 答案带出处（公司 / 年份 / 章节 / 页码）</p>
+</header>
+<main>
+  <div class="search">
+    <input id="q" placeholder="例如：中芯国际2024年营收是多少？研发投入最高的公司是谁？">
+    <button onclick="ask()">提问</button>
+  </div>
+  <div class="hint">覆盖 13 家 A 股半导体公司 2024 年年度报告全文。</div>
+  <div id="out"></div>
+</main>
+<script>
+window.addEventListener('load', () => {
+  const p = new URLSearchParams(location.search).get('q');
+  if (p) { document.getElementById('q').value = p; ask(); }
+});
+async function ask() {
+  const q = document.getElementById('q').value.trim();
+  if (!q) return;
+  document.getElementById('out').innerHTML = '<div class="hint">检索中…</div>';
+  const r = await fetch('/query?q=' + encodeURIComponent(q));
+  const j = await r.json();
+  const top = j.hits[0];
+  const ans = top ? top.text.slice(0, 500) : '（未检索到相关内容）';
+  document.getElementById('out').innerHTML = `
+    <div class="qa">
+      <div class="meta"><b>问题：</b>${escapeHtml(j.query)}</div>
+      <div class="answer">${escapeHtml(ans)}</div>
+      <div class="meta">依据（按相关度排序）：</div>
+      ${j.hits.map(h => `
+        <div class="qa" style="margin-top:10px">
+          <div class="meta">
+            <span class="badge">${escapeHtml(h.company)} ${h.code}</span>
+            <span>${escapeHtml(h.year)}年报 · 第${h.page}页 · ${escapeHtml(h.section)}</span>
+            <span style="margin-left:8px">BM25=${h.bm25.toFixed(2)} 向量=${h.dense.toFixed(3)}</span>
+          </div>
+          <div class="src">${escapeHtml(h.text.slice(0, 600))}</div>
+        </div>`).join('')}
+    </div>`;
+}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+</script>

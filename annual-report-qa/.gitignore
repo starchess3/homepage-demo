@@ -1,0 +1,18 @@
+# 生成的大文件（可复现，不入库）
+data/pdfs/*.pdf
+data/chunks.jsonl
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# 系统与编辑器
+.DS_Store
+.idea/
+.vscode/
+
+# 本地依赖/浏览器（若在上级目录初始化 git）
+.pylibs/
+.pw-browsers/
+node_modules/
