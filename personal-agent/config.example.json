@@ -1,0 +1,55 @@
+{
+  "data_dir": "data",
+  "output_dir": "output",
+  "external_source": {
+    "type": "ths",
+    "code": "300475",
+    "name": "香农芯创",
+    "limit": 5
+  },
+  "inventory": {
+    "roots": [
+      "~"
+    ],
+    "exclude_dirs": [
+      "Library",
+      ".Trash",
+      ".cache",
+      ".npm",
+      ".cargo",
+      ".rustup",
+      ".conda",
+      ".pyenv",
+      ".virtualenvs",
+      "node_modules",
+      ".git",
+      ".venv",
+      "venv",
+      "__pycache__",
+      "Applications",
+      "System",
+      "private",
+      ".local",
+      ".codex",
+      ".agents"
+    ],
+    "max_files": 20000,
+    "max_depth": 8,
+    "max_file_bytes": 10485760
+  },
+  "email": {
+    "enabled": false,
+    "smtp_host": "smtp.qq.com",
+    "smtp_port": 587,
+    "username": "you@example.com",
+    "password_env": "AGENT_EMAIL_PASSWORD",
+    "password_file": "data/email_password.txt",
+    "from": "you@example.com",
+    "to": "you@example.com"
+  },
+  "schedule": {
+    "time": "15:30",
+    "weekdays": [1, 2, 3, 4, 5],
+    "launch_agent_label": "com.user.personal-agent"
+  }
+}

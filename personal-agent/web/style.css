@@ -1,0 +1,167 @@
+:root {
+  color-scheme: dark;
+  --bg: #0b0f14;
+  --panel: #131a22;
+  --border: #243040;
+  --text: #e7edf3;
+  --muted: #8b98a5;
+  --up: #f0433c;
+  --down: #2bbd7e;
+  --accent: #4f8cff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at 50% -10%, #16202c, var(--bg) 60%);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 34px 18px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: 0.5px;
+}
+
+header p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.badge {
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+main {
+  padding: 0 34px 40px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.card,
+.panel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.01));
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.label {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.price,
+.money {
+  margin-top: 12px;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.sub {
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.up {
+  color: var(--up);
+}
+
+.down {
+  color: var(--down);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.panel h2 {
+  margin: 0 0 16px;
+  font-size: 16px;
+  color: var(--text);
+}
+
+#chart svg {
+  width: 100%;
+  height: 220px;
+}
+
+.flow-row {
+  display: grid;
+  grid-template-columns: 84px 1fr 130px;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-size: 13px;
+}
+
+.flow-track {
+  height: 10px;
+  background: #1b2634;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.flow-bar {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+}
+
+.conclusion {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+pre {
+  margin: 0;
+  white-space: pre-wrap;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.inventory-line {
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (max-width: 900px) {
+  .cards,
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  header,
+  main {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}

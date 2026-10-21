@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+
+# 本地运行产物与敏感数据（含邮箱授权码、家目录文件清单，勿提交）
+data/
+output/
+
+# 本地 vendor 与浏览器缓存
+.pylibs/
+.pw-browsers/
+
+# 与个人 agent 无关的子项目
+annual-report-qa/
+annual-report-qa-github.zip
+junzheng-dms/
+
+# 本地私密配置（真实邮箱地址等），请复制 config.example.json 后填写
+config.json

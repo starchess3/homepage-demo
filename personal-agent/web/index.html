@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>香农芯创 · 监控台</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>香农芯创 · 资金监控台</h1>
+        <p id="update-time">加载中…</p>
+      </div>
+      <div class="badge" id="trend-badge">—</div>
+    </header>
+
+    <main>
+      <section class="cards">
+        <div class="card">
+          <span class="label">最新收盘价</span>
+          <div class="price" id="price">--</div>
+          <div class="sub" id="change">--</div>
+        </div>
+        <div class="card">
+          <span class="label">主力资金净流入</span>
+          <div class="money" id="main-net">--</div>
+        </div>
+        <div class="card">
+          <span class="label">超大单 + 大单</span>
+          <div class="money" id="big-net">--</div>
+        </div>
+        <div class="card">
+          <span class="label">中单 + 小单</span>
+          <div class="money" id="small-net">--</div>
+        </div>
+      </section>
+
+      <section class="grid">
+        <div class="panel">
+          <h2>收盘价走势</h2>
+          <div id="chart"></div>
+        </div>
+        <div class="panel">
+          <h2>资金结构</h2>
+          <div id="fund-flow"></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>一句话结论</h2>
+        <p class="conclusion" id="conclusion">加载中…</p>
+      </section>
+
+      <section class="grid">
+        <div class="panel">
+          <h2>本地资产地图</h2>
+          <div id="inventory">加载中…</div>
+        </div>
+        <div class="panel">
+          <h2>最近运行日志</h2>
+          <pre id="log">加载中…</pre>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
