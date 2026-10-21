@@ -9,7 +9,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
-USER_AGENT = "personal-agent/1.0 (homework demo)"
+USER_AGENT = "personal-agent/1.0"
 
 
 def _jsonp_payload(text: str) -> dict:

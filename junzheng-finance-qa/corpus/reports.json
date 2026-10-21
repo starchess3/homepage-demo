@@ -4,7 +4,7 @@
     "year": 2023,
     "rtype": "annual",
     "title": "君正股份2023年年度报告",
-    "path": "/Users/zhouxingli/Desktop/人工智能与数据分析课程/年报/君正股份2023年年度报告.pdf",
+    "path": "corpus/pdfs/君正股份2023年年度报告.pdf",
     "page_count": 209,
     "pages": [
       {
@@ -850,7 +850,7 @@
     "year": 2023,
     "rtype": "half",
     "title": "君正股份2023年半年度报告",
-    "path": "/Users/zhouxingli/Desktop/人工智能与数据分析课程/半年报/君正股份2023年半年度报告.pdf",
+    "path": "corpus/pdfs/君正股份2023年半年度报告.pdf",
     "page_count": 133,
     "pages": [
       {
@@ -1392,7 +1392,7 @@
     "year": 2024,
     "rtype": "annual",
     "title": "君正股份2024年年度报告",
-    "path": "/Users/zhouxingli/Desktop/人工智能与数据分析课程/年报/君正股份2024年年度报告.pdf",
+    "path": "corpus/pdfs/君正股份2024年年度报告.pdf",
     "page_count": 201,
     "pages": [
       {
@@ -2206,7 +2206,7 @@
     "year": 2024,
     "rtype": "half",
     "title": "君正股份2024年半年度报告",
-    "path": "/Users/zhouxingli/Desktop/人工智能与数据分析课程/半年报/君正股份2024年半年度报告.pdf",
+    "path": "corpus/pdfs/君正股份2024年半年度报告.pdf",
     "page_count": 164,
     "pages": [
       {
@@ -2872,7 +2872,7 @@
     "year": 2025,
     "rtype": "annual",
     "title": "君正股份2025年年度报告",
-    "path": "/Users/zhouxingli/Desktop/人工智能与数据分析课程/年报/君正股份2025年年度报告.pdf",
+    "path": "corpus/pdfs/君正股份2025年年度报告.pdf",
     "page_count": 206,
     "pages": [
       {
@@ -3706,7 +3706,7 @@
     "year": 2025,
     "rtype": "half",
     "title": "君正股份2025年半年度报告",
-    "path": "/Users/zhouxingli/Desktop/人工智能与数据分析课程/半年报/君正股份2025年半年度报告.pdf",
+    "path": "corpus/pdfs/君正股份2025年半年度报告.pdf",
     "page_count": 174,
     "pages": [
       {
@@ -4412,7 +4412,7 @@
     "year": 2026,
     "rtype": "half",
     "title": "君正股份2026年半年度报告",
-    "path": "/Users/zhouxingli/Desktop/人工智能与数据分析课程/半年报/君正股份2026年半年度报告.pdf",
+    "path": "corpus/pdfs/君正股份2026年半年度报告.pdf",
     "page_count": 162,
     "pages": [
       {
